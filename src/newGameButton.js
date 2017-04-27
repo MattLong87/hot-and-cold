@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function NewGameButton(){
-	return <button>New Game</button>;
+export default function NewGameButton(props){
+	return <button onClick={props.onClick}>New Game</button>;
 }
