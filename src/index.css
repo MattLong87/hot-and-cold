@@ -1,0 +1,69 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #16A085;
+	color: #ffffff;
+	font-family: 'Verdana', sans-serif;
+	text-align: center;
+}
+
+h1{
+	font-size: 46pt;
+}
+
+.feedback-area{
+	background-color: #6C7A89;
+	display: inline-block;
+	padding: 20px 50px;
+	border-radius: 30px;
+}
+
+.cold{
+	background-color: blue;
+}
+
+button{
+	border: none;
+	background-color: #F5D76E;
+	font-size: 12pt;
+	padding: 15px 40px;
+	border-radius: 7px;
+	text-transform: uppercase;
+}
+
+button:hover{
+	cursor: pointer;
+	background-color: #D35400;
+}
+
+input{
+	background-color: #414142;
+	color: white;
+	border:none;
+	font-size: 30pt;
+	border-radius: 5px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+h4{
+	font-size: 20pt;
+}
+
+h5{
+	font-size: 16pt;
+}
+
+h6{
+	font-size: 16pt;
+}
+
+.guess{
+	background-color: #333333;
+	color: white;
+	margin-right: 10px;
+	padding: 5px;
+	border-radius: 5px;
+}

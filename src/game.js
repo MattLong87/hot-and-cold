@@ -4,6 +4,7 @@ import GuessCounter from './guessCounter';
 import GuessHistory from './guessHistory';
 import NewGameButton from './newGameButton';
 import GuessEntryForm from './guessEntryForm';
+import './index.css';
 
 export default class Game extends React.Component{
 	constructor(props){
@@ -13,7 +14,10 @@ export default class Game extends React.Component{
 			guess:0,
 			feedback: "Make a Guess",
 			guessHistory: [],
-			guessCounter: 0
+			guessCounter: 0,
+			//submittable keeps you from clicking submit without
+			//changing the input
+			submittable: false
 		}
 	}
 
@@ -40,7 +44,8 @@ export default class Game extends React.Component{
 			answer: this.state.answer,
 			feedback: feedback,
 			guessHistory: history,
-			guessCounter: this.state.guessCounter + 1
+			guessCounter: this.state.guessCounter + 1,
+			submittable: false
 		})
 	}
 
@@ -50,7 +55,8 @@ export default class Game extends React.Component{
 			answer: this.state.answer,
 			feedback: this.state.feedback,
 			guessHistory: this.state.guessHistory,
-			guessCounter: this.state.guessCounter
+			guessCounter: this.state.guessCounter,
+			submittable: true
 		})
 	}
 
@@ -71,7 +77,7 @@ export default class Game extends React.Component{
 			<NewGameButton onClick={(_)=>this.resetGame()}/>
 			<FeedbackArea feedback={this.state.feedback}/>
 			<GuessEntryForm 
-				onSubmit={(_) => this.evaluateGuess()} 
+				onSubmit={(_) => {if(this.state.submittable){this.evaluateGuess()}}} 
 				onChange={value=>this.inputChange(value)}
 			/>
 			<GuessCounter counter={this.state.guessCounter}/>

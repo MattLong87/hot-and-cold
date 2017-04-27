@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function FeedbackArea(props){
-	return <h3>{props.feedback}</h3>
+	return <div><h3 className="feedback-area">{props.feedback}</h3></div>
 }
