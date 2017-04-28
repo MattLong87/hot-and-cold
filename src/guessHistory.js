@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default function guessHistory(props){
-	const guesses = props.history.map((guess) =>{
-		return <span className="guess">{guess}</span>
+	const guesses = props.history.map((guess, i) =>{
+		return <span className="guess" key={i}>{guess}</span>
 	})
 	return (
 		<div>

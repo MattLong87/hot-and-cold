@@ -9,7 +9,7 @@ export default function GuessEntryForm(props){
 			props.onSubmit();
 			}
 		}>
-		<GuessInput onChange={value=>{props.onChange(value)}}/>
+		<GuessInput onChange={value=>{props.onChange(value)}} value={props.value}/>
 		<SubmitGuessButton />
 		</form>
 		)

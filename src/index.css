@@ -67,3 +67,11 @@ h6{
 	padding: 5px;
 	border-radius: 5px;
 }
+
+.cold{
+	background-color: #6f93ce;
+}
+
+.hot{
+	background-color: #ba4444;
+}

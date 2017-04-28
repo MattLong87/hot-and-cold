@@ -9,7 +9,11 @@ import './index.css';
 export default class Game extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {
+		this.state = this.setInitialState();
+	}
+
+	setInitialState(){
+		return {
 			answer: Math.floor(Math.random()*99) + 1,
 			guess:0,
 			feedback: "Make a Guess",
@@ -17,8 +21,9 @@ export default class Game extends React.Component{
 			guessCounter: 0,
 			//submittable keeps you from clicking submit without
 			//changing the input
-			submittable: false
-		}
+			submittable: false,
+			key: 0
+		};
 	}
 
 	evaluateGuess(guess){
@@ -36,14 +41,11 @@ export default class Game extends React.Component{
 			feedback = "Cold"
 		}
 
-		let history = this.state.guessHistory;
-		history.push(this.state.guess);
-
 		this.setState({
-			guess: this.state.guess,
+			guess: 0,
 			answer: this.state.answer,
 			feedback: feedback,
-			guessHistory: history,
+			guessHistory: [...this.state.guessHistory, this.state.guess],
 			guessCounter: this.state.guessCounter + 1,
 			submittable: false
 		})
@@ -61,24 +63,19 @@ export default class Game extends React.Component{
 	}
 
 	resetGame(){
-		this.setState({
-			guess: 0,
-			answer: Math.floor(Math.random()*99) + 1,
-			feedback: "Make a Guess",
-			guessHistory: [],
-			guessCounter: 0
-		})
+		this.setState(this.setInitialState());
 	}
 
 	render(){
 		return (
-			<div>
+			<div key={this.state.key}>
 			<h1>Hot or Cold?{this.state.answer}</h1>
 			<NewGameButton onClick={(_)=>this.resetGame()}/>
 			<FeedbackArea feedback={this.state.feedback}/>
 			<GuessEntryForm 
 				onSubmit={(_) => {if(this.state.submittable){this.evaluateGuess()}}} 
 				onChange={value=>this.inputChange(value)}
+				value={this.state.guess}
 			/>
 			<GuessCounter counter={this.state.guessCounter}/>
 			<GuessHistory history={this.state.guessHistory}/>
